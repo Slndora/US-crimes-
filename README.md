@@ -11,10 +11,7 @@ The objective of this project is to analyze U.S. crime data from 2020-2024, focu
 - [Technologies Used](#technologies-used)
 - [Importing the data](#importing-the-data)
 - [Data Cleaning](#data-cleaning)
-- [Data Manipulation](#data-manipulation)
-- [SQL for Data Insights](#sQL-for-data-insights)
-- [Insights Generated with SQL Queries](#insights-generated-with-sQL-queries)
-- [Measures in Power BI](#measures-in-power-bI)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
 - [Dashboard](#dashboard)
 - [Acknowledgments](#acknowledgments)
 
@@ -297,21 +294,31 @@ dr_no	date rptd	date occ	time occ	area	area name	rpt dist no	part 1-2	crm cd	crm
 ```
 df['vict sex'].unique()
 array(['M', 'X', 'F', nan, 'H', '-'], dtype=object)
+```
+```
 # Let's delete data with "-"
 mask = (df['vict sex'] == '-')
 df = df.loc[~mask]
 df['vict descent'].unique()
 array(['O', 'X', 'H', 'B', 'W', nan, 'A', 'K', 'C', 'J', 'F', 'I', 'V',
        'S', 'P', 'Z', 'G', 'U', 'D', 'L', '-'], dtype=object)
+```
+```
 # Let's delete data with "-"
 mask = (df['vict descent'] == '-')
+```
+```
 df = df.loc[~mask]
 # Create 'date' column with only year and month.
 df['date'] = pd.to_datetime(df['date occ'],format='mixed')
 df['date'] = df['date'].astype(str)
 df['date'] = df['date'].str[:7]
+```
+```
 # Put the Dataset in chronological order.
 df = df.sort_values(by='date')
+```
+```
 df.head()
 dr_no	date rptd	date occ	time occ	area	area name	rpt dist no	part 1-2	crm cd	crm cd desc	...	status desc	crm cd 1	crm cd 2	crm cd 3	crm cd 4	location	cross street	lat	lon	date
 0	190326475	01 03 2020 00:00:00	01 03 2020 00:00:00	2130	7	Wilshire	784	1	510	VEHICLE - STOLEN	...	Adult Arrest	510.0	998.0	NaN	NaN	1900 S LONGWOOD AV	NaN	34.0375	-118.3506	2020-01
@@ -320,7 +327,8 @@ dr_no	date rptd	date occ	time occ	area	area name	rpt dist no	part 1-2	crm cd	crm
 72848	200905443	02 02 2020 00:00:00	23 01 2020 00:00:00	1100	9	Van Nuys	955	1	440	THEFT PLAIN - PETTY ($950 & UNDER)	...	Invest Cont	440.0	NaN	NaN	NaN	5200 TILDEN AV	NaN	34.1649	-118.4475	2020-01
 173898	201805426	27 01 2020 00:00:00	27 01 2020 00:00:00	30	18	Southeast	1862	2	740	VANDALISM - FELONY ($400 & OVER, ALL CHURCH VA...	...	Adult Arrest	740.0	NaN	NaN	NaN	IMPERIAL HY	BROADWAY	33.9310	-118.2791	2020-01
 5 rows × 29 columns
-
+```
+```
 def grab_col_names(dataframe, cat_th=10, car_th=30):
     
     # cat_cols, cat_but_car
@@ -352,4 +360,44 @@ cat_cols: 7
 num_cols: 13
 cat_but_car: 9
 num_but_cat: 2
+```
+```
 df.to_csv('cleaned_crime_data.csv', index=False)
+```
+## Exploratory Data Analysis
+## Categorical Columns
+```
+def cat_summary(dataframe, col_name, plot=False):
+    print(pd.DataFrame({col_name: dataframe[col_name].value_counts(),
+                        "Ratio": 100 * dataframe[col_name].value_counts() / len(dataframe)}))
+
+    if plot:
+        fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+        plt.subplot(1, 2, 1)
+        sns.countplot(x=dataframe[col_name], data=dataframe, palette = "Set1")
+        plt.title("Frequency of " + col_name)
+        plt.xticks(rotation=90)
+
+        plt.subplot(1, 2, 2)
+        values = dataframe[col_name].value_counts()
+        plt.pie(x=values, labels=values.index, autopct=lambda p: '{:.2f}% ({:.0f})'.format(p, p/100 * sum(values)))
+        hole = plt.Circle((0, 0), 0.40, facecolor='white')
+        plt.gcf().gca().add_artist(hole)        
+        plt.title("Frequency of " + col_name)
+        plt.legend(labels=['{} - {:.2f}%'.format(index, value/sum(values)*100) for index, value in zip(values.index, values)],
+                   loc='upper center', bbox_to_anchor=(0.5, -0.2), fancybox=True, shadow=True, ncol=1)
+        plt.show(block=True)
+
+for col in cat_cols:
+    cat_summary(df, col, True)
+```
+
+
+
+
+
+
+
+
+
+
