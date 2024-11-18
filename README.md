@@ -624,6 +624,7 @@ After completing the data cleaning process, I saved the final version of the dat
 
 ## Dashboard
 ![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/Screenshot%202024-11-17%20153802.png)
+[click here to view](https://1drv.ms/x/c/f0e12938e8342fde/EYxbtcRdR_1Ikw2Th56YEdsBP9Lr1lu8HqqKK9rB80quSw?e=0Xbg6K)
 
 ## Acknowledgments
 This project uses the US Crimes[20202024] dataset provided by Jainendra Bhiduri from kaggle. We thank them for their valuable contribution.
