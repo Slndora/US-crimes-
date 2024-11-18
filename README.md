@@ -391,9 +391,32 @@ def cat_summary(dataframe, col_name, plot=False):
 for col in cat_cols:
     cat_summary(df, col, True)
 ```
+![alt text]()
 
+## Numerical Columns
+```
+def num_summary(dataframe, numerical_col, plot=False):
+    if plot:
+            fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+            plt.subplot(1, 2, 1)
+            dataframe[numerical_col].hist(bins=50, color = "#900C3F")
+            plt.xlabel(numerical_col)
+            plt.title(numerical_col)
 
+            plt.subplot(1, 2, 2)
+            sns.boxplot(y=numerical_col, data=dataframe, color = "#900C3F")
+            plt.title("Frequency of " + numerical_col)
+            plt.xticks(rotation=90)
 
+            plt.show(block=True)      
+
+            print("______________________________________________________\n")
+
+for col in num_cols:
+    print(col)
+    num_summary(df, col, plot=True)
+```
+![alt text]()
 
 
 
