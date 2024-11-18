@@ -12,6 +12,7 @@ The objective of this project is to analyze U.S. crime data from 2020-2024, focu
 - [Importing the data](#importing-the-data)
 - [Data Cleaning](#data-cleaning)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Importing to Excel].(#importing-to-excel).
 - [Dashboard](#dashboard)
 - [Acknowledgments](#acknowledgments)
 
@@ -618,6 +619,7 @@ plt.show()
 ```
 ![alt text]()
 
+## Importing to Excel
 
 
 
