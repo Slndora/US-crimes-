@@ -1,5 +1,5 @@
 # Comprehensive Crime Report Analysis: Trends, Victimology, and Geographic Insights (2020-2024)
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/1376505-crime-scene-wallpaper-1920x1080-for-android-40.jpg)
 # Objective 
 The objective of this project is to analyze U.S. crime data from 2020-2024, focusing on trends in crime classification, victim demographics, geographic patterns, weapon usage, and case statuses. The goal is to uncover insights into crime dynamics, inform law enforcement strategies, and highlight areas for policy improvement and crime prevention.
 
@@ -392,7 +392,7 @@ def cat_summary(dataframe, col_name, plot=False):
 for col in cat_cols:
     cat_summary(df, col, True)
 ```
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/screencapture-localhost-8888-notebooks-Desktop-ravi-crime-EDA-ipynb-2024-11-18-08_03_33.png)
 
 ## Numerical Columns
 ```
@@ -417,7 +417,7 @@ for col in num_cols:
     print(col)
     num_summary(df, col, plot=True)
 ```
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/screencapture-file-C-Users-akash-Downloads-crime-EDA-html-2024-11-18-08_16_33.png)
 
 ## Victim Age
 ```
@@ -435,7 +435,7 @@ plt.xticks(rotation=90, fontsize = 7)
 plt.ylabel('Vict Age')
 plt.show()
 ```
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/Screenshot%202024-11-18%20082316.png)
 
 ```
 df_age['vict sex'].value_counts()
@@ -462,7 +462,7 @@ plt.xticks(rotation=90, fontsize = 7)
 plt.ylabel('Vict Age')
 plt.show()
 ```
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/Screenshot%202024-11-18%20082421.png)
 
 ```
 df_age['area name'].value_counts()
@@ -506,7 +506,7 @@ plt.xticks(rotation=90, fontsize = 7)
 plt.ylabel('Vict Age')
 plt.show()
 ```
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/Screenshot%202024-11-18%20082531.png)
 
 ```
 df_age['vict descent'].value_counts()
@@ -548,7 +548,7 @@ plt.xticks(rotation=90, fontsize = 5)
 plt.ylabel('Vict Age')
 plt.show()
 ```
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/Screenshot%202024-11-18%20082644.png)
 
 ```
 # Plot entire period - Part 1-2
@@ -561,7 +561,7 @@ plt.xticks(rotation=90, fontsize = 5)
 plt.ylabel('Vict Age')
 plt.show()
 ```
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/Screenshot%202024-11-18%20082738.png)
 
 ```
 # Let's select the most relevant items.
@@ -595,7 +595,7 @@ plt.xticks(rotation=90, fontsize = 5)
 plt.ylabel('Vict Age')
 plt.show()
 ```
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/Screenshot%202024-11-18%20082917.png)
 
 ```
 Summary The reduction in the average age of victims occurred mainly in:
@@ -617,13 +617,13 @@ viz_4=df_loc.plot(kind='scatter', x='lon', y='lat', label='availability_365', c=
 viz_4.legend()
 plt.show()
 ```
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/Screenshot%202024-11-18%20083059.png)
 
 ## Importing to Excel
 After completing the data cleaning process, I saved the final version of the dataset as cleaned_crime_data.csv to ensure that all irrelevant, duplicate, and missing data were removed, and the data was structured for analysis. This CSV file was then imported into Microsoft Excel for further analysis and visualization. In Excel, the dataset was organized and formatted, with proper column headers, consistent data types, and any necessary adjustments made to improve readability. This prepares the dataset for in-depth exploration, including statistical analysis, trend visualization, and the generation of actionable insights related to crime patterns.
 
 ## Dashboard
-![alt text]()
+![alt text](https://github.com/Slndora/US-crimes-/blob/37201d053aa87207437addc71841c867dfc98955/Screenshot%202024-11-17%20153802.png)
 
 ## Acknowledgments
 This project uses the US Crimes[20202024] dataset provided by Jainendra Bhiduri from kaggle. We thank them for their valuable contribution.
