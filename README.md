@@ -418,6 +418,220 @@ for col in num_cols:
 ```
 ![alt text]()
 
+## Victim Age
+```
+# Let's exclude victims with a negative age.
+mask = (df['vict age'] < 0)
+df_age = df.loc[~mask]
+```
+```
+# Plot entire period - Average of the Vict Age
+fig, ax = plt.subplots(figsize=(12, 5))
+sns.lineplot(x='date', y = 'vict age', data=df_age)
+plt.title('Average of the Vict Age over the entire period')
+plt.xlabel('Date')
+plt.xticks(rotation=90, fontsize = 7)
+plt.ylabel('Vict Age')
+plt.show()
+```
+![alt text]()
+
+```
+df_age['vict sex'].value_counts()
+vict sex
+M    396743
+F    352738
+X     94467
+H       112
+Name: count, dtype: int64
+```
+```
+# Let's delete the least relevant item.
+sex = list(['H'])
+df_sex = df_age.loc[~df_age['vict sex'].isin(sex)]
+```
+```
+# Plot entire period - AVG of the Vict Age by Sex
+fig, ax = plt.subplots(figsize=(12, 5))
+sns.lineplot(x='date', y = 'vict age', hue = 'vict sex', data=df_sex)
+plt.title('Comparison of the AVG of the Vict Age by Sex')
+plt.legend(loc='upper left', bbox_to_anchor=(1,1), title='Vict Sex')
+plt.xlabel('Date')
+plt.xticks(rotation=90, fontsize = 7)
+plt.ylabel('Vict Age')
+plt.show()
+```
+![alt text]()
+
+```
+df_age['area name'].value_counts()
+area name
+Central        67760
+77th Street    60864
+Pacific        57804
+Southwest      55977
+Hollywood      51318
+N Hollywood    49974
+Southeast      49114
+Olympic        49010
+Newton         48262
+Wilshire       47081
+Rampart        45816
+West LA        44666
+Northeast      41893
+Van Nuys       41880
+West Valley    41310
+Devonshire     40827
+Harbor         40466
+Topanga        40425
+Mission        39403
+Hollenbeck     36102
+Foothill       32553
+Name: count, dtype: int64
+```
+```
+# Let's select the most relevant items.
+area = list(['Central','77th Street','Pacific','Southwest','Hollywood'])
+df_area = df_age.loc[df_age['area name'].isin(area)]
+```
+```
+# Plot entire period - AREA NAME
+fig, ax = plt.subplots(figsize=(12, 5))
+sns.lineplot(x='date', y = 'vict age', hue = 'area name', data=df_area, errorbar=None)
+plt.title('Comparison of the AVG of the Vict Age by AREA')
+plt.legend(loc='upper left', bbox_to_anchor=(1,1), title='AREA NAME')
+plt.xlabel('Date')
+plt.xticks(rotation=90, fontsize = 7)
+plt.ylabel('Vict Age')
+plt.show()
+```
+![alt text]()
+
+```
+df_age['vict descent'].value_counts()
+vict descent
+H    292422
+W    197106
+B    134181
+X    103234
+O     76705
+A     21027
+K      5678
+F      4555
+C      4265
+J      1490
+V      1117
+I       968
+Z       529
+P       277
+U       211
+D        86
+G        72
+L        71
+S        55
+Name: count, dtype: int64
+```
+```
+# Let's select the most relevant items.
+descent = list(['H','W','B','X','O'])
+df_descent = df_age.loc[df_age['vict descent'].isin(descent)]
+```
+```
+# Plot entire period - Vict Descent
+fig, ax = plt.subplots(figsize=(12, 5))
+sns.lineplot(x='date', y = 'vict age', hue = 'vict descent', data=df_descent)
+plt.title('Comparison of the AVG of the Vict Age by Vict Descent')
+plt.legend(loc='upper left', bbox_to_anchor=(1,1), title='Vict Descent')
+plt.xlabel('Date')
+plt.xticks(rotation=90, fontsize = 5)
+plt.ylabel('Vict Age')
+plt.show()
+```
+![alt text]()
+
+```
+# Plot entire period - Part 1-2
+fig, ax = plt.subplots(figsize=(12, 5))
+sns.lineplot(x='date', y = 'vict age', hue = 'part 1-2', data=df_age)
+plt.title('Comparison of the AVG of the Vict Age by Part 1-2')
+plt.legend(loc='upper left', bbox_to_anchor=(1,1), title='Part 1-2')
+plt.xlabel('Date')
+plt.xticks(rotation=90, fontsize = 5)
+plt.ylabel('Vict Age')
+plt.show()
+```
+![alt text]()
+
+```
+# Let's select the most relevant items.
+df_age['weapon desc'].value_counts()
+weapon desc
+STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE)    174410
+UNKNOWN WEAPON/OTHER WEAPON                        35944
+VERBAL THREAT                                      23800
+HAND GUN                                           20107
+SEMI-AUTOMATIC PISTOL                               7246
+                                                   ...  
+MAC-11 SEMIAUTOMATIC ASSAULT WEAPON                    3
+MAC-10 SEMIAUTOMATIC ASSAULT WEAPON                    2
+HECKLER & KOCH 91 SEMIAUTOMATIC ASSAULT RIFLE          2
+M-14 SEMIAUTOMATIC ASSAULT RIFLE                       2
+M1-1 SEMIAUTOMATIC ASSAULT RIFLE                       1
+Name: count, Length: 79, dtype: int64
+```
+```
+weapon = list(['STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE)','UNKNOWN WEAPON/OTHER WEAPON','VERBAL THREAT','HAND GUN'])
+df_weapon = df_age.loc[df_age['weapon desc'].isin(weapon)]
+```
+```
+# Plot entire period - Weapon Desc
+fig, ax = plt.subplots(figsize=(12, 5))
+sns.lineplot(x='date', y = 'vict age', hue = 'weapon desc', data=df_weapon, errorbar=None)
+plt.title('Comparison of the AVG of the Vict Age by Weapon Desc')
+plt.legend(loc='upper left', bbox_to_anchor=(1,1), title='Weapon Desc')
+plt.xlabel('Date')
+plt.xticks(rotation=90, fontsize = 5)
+plt.ylabel('Vict Age')
+plt.show()
+```
+![alt text]()
+
+```
+Summary The reduction in the average age of victims occurred mainly in:
+
+M (Male) sex victims Victims from the 'Central' and '77th Street' areas. Victims descending from type 'O' Victims of Part 2 (less serious) Victims of 'Strong-Arm' and especially 'Verbal Threat'
+```
+## Location
+```
+# Let's exclude latitude and longitude equal to zero.
+mask = (df['lat'] == 0) | (df['lon'] == 0)
+df_loc = df.loc[~mask]
+```
+```
+#let's what we can do with our given longtitude and latitude columns
+
+#let's see how scatterplot will come out 
+viz_4=df_loc.plot(kind='scatter', x='lon', y='lat', label='availability_365', c='vict age',
+                  cmap=plt.get_cmap('viridis_r'), colorbar=True, alpha=0.4, figsize=(8,6))
+viz_4.legend()
+plt.show()
+```
+![alt text]()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
