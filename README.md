@@ -623,9 +623,10 @@ plt.show()
 After completing the data cleaning process, I saved the final version of the dataset as cleaned_crime_data.csv to ensure that all irrelevant, duplicate, and missing data were removed, and the data was structured for analysis. This CSV file was then imported into Microsoft Excel for further analysis and visualization. In Excel, the dataset was organized and formatted, with proper column headers, consistent data types, and any necessary adjustments made to improve readability. This prepares the dataset for in-depth exploration, including statistical analysis, trend visualization, and the generation of actionable insights related to crime patterns.
 
 ## Dashboard
+![alt text]()
 
-
-
+## Acknowledgments
+This project uses the US Crimes[20202024] dataset provided by Jainendra Bhiduri from kaggle. We thank them for their valuable contribution.
 
 
 
